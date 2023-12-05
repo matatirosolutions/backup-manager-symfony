@@ -150,8 +150,8 @@ class Configuration implements ConfigurationInterface
         throw new InvalidConfigurationException(sprintf(
             'Storage type "%s" received invalid key "%s". Please choose one of "%s".',
             $typeName,
-            implode(', ', $expected),
-            implode(', ', $actual)
+            implode(', ', $actual),
+            implode(', ', $expected)
         ));
     }
 }

@@ -7,7 +7,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Dropbox\DropboxAdapter;
 use Mhetreramesh\Flysystem\BackblazeAdapter;
-use Srmklive\Dropbox\Adapter\DropboxAdapter as Dropbox2Adapter;
+use Spatie\FlysystemDropbox\DropboxAdapter as Dropbox2Adapter;
 use League\Flysystem\Rackspace\RackspaceAdapter;
 use League\Flysystem\Sftp\SftpAdapter;
 use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
@@ -74,7 +74,7 @@ class BMBackupManagerExtension extends Extension
             'B2' => ['package'=>'mhetreramesh/flysystem-backblaze:^1.0', 'test'=>BackblazeAdapter::class],
             'Rackspace' => ['package'=>'league/flysystem-rackspace:^1.0', 'test'=>RackspaceAdapter::class],
             'Dropbox' => ['package'=>'league/flysystem-dropbox:^1.0', 'test'=>DropboxAdapter::class],
-            'DropboxV2' => ['package'=>'srmklive/flysystem-dropbox-v2:^1.0', 'test'=>Dropbox2Adapter::class],
+            'DropboxV2' => ['package'=>'spatie/flysystem-dropbox:^1.2', 'test'=>Dropbox2Adapter::class],
             'Ftp' => ['package'=>'league/flysystem:^1.0', 'test'=>Ftp::class],
             'Sftp' => ['package'=>'league/flysystem-sftp:^1.0', 'test'=>SftpAdapter::class],
             'Gcs' => ['package' => 'superbalist/flysystem-google-storage:^6.0', 'test' => GoogleStorageAdapter::class],
