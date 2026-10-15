@@ -39,29 +39,8 @@ class Configuration implements ConfigurationInterface
                                     case 'AwsS3':
                                         $this->validateAuthenticationType(['key', 'secret', 'region', 'version', 'bucket', 'root', 'endpoint'], $config, 'AwsS3');
                                         break;
-                                    case 'B2':
-                                        $this->validateAuthenticationType(['key', 'accountId', 'bucket'], $config, 'B2');
-                                        break;
-                                    case 'Rackspace':
-                                        $this->validateAuthenticationType(['username', 'password', 'container'], $config, 'Rackspace');
-                                        break;
-                                    case 'Dropbox':
-                                        $this->validateAuthenticationType(['token', 'key', 'secret', 'app', 'root'], $config, 'Dropbox');
-                                        break;
-                                    case 'DropboxV2':
-                                        $this->validateAuthenticationType(['token', 'root'], $config, 'DropboxV2');
-                                        break;
-                                    case 'Ftp':
-                                        $this->validateAuthenticationType(['host', 'username', 'password', 'root', 'port', 'passive', 'ssl', 'timeout'], $config, 'Ftp');
-                                        break;
-                                    case 'Sftp':
-                                        $this->validateAuthenticationType(['host', 'username', 'password', 'root', 'port', 'timeout', 'privateKey'], $config, 'Sftp');
-                                        break;
-                                    case 'Gcs':
-                                        $this->validateAuthenticationType(['project', 'keyFilePath', 'bucket', 'prefix'], $config, 'Gcs');
-                                        break;
                                     default:
-                                        $validTypes = ['Local', 'AwsS3', 'B2', 'Rackspace', 'Dropbox', 'DropboxV2', 'Ftp', 'Sftp', 'Gcs'];
+                                        $validTypes = ['Local', 'AwsS3'];
                                         throw new InvalidConfigurationException(sprintf('Type must be one of "%s", got "%s"', implode(', ', $validTypes), $config['type']));
                                 }
                             }

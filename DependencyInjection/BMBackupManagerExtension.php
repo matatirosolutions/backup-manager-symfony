@@ -2,15 +2,8 @@
 
 namespace BM\BackupManagerBundle\DependencyInjection;
 
-use League\Flysystem\Adapter\Ftp;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use League\Flysystem\Dropbox\DropboxAdapter;
-use Mhetreramesh\Flysystem\BackblazeAdapter;
-use Spatie\FlysystemDropbox\DropboxAdapter as Dropbox2Adapter;
-use League\Flysystem\Rackspace\RackspaceAdapter;
-use League\Flysystem\Sftp\SftpAdapter;
-use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
+use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Reference;
@@ -36,13 +29,6 @@ class BMBackupManagerExtension extends Extension
         $managerIdMap = [
             'Local' => 'backup_manager.filesystems.local_filesystem',
             'AwsS3' => 'backup_manager.filesystems.awss3_filesystem',
-            'B2' => 'backup_manager.filesystems.b2_filesystem',
-            'Rackspace' => 'backup_manager.filesystems.rackspace_filesystem',
-            'Dropbox' => 'backup_manager.filesystems.dropbox_filesystem',
-            'DropboxV2' => 'backup_manager.filesystems.dropbox_v2_filesystem',
-            'Ftp' => 'backup_manager.filesystems.ftp_filesystem',
-            'Sftp' => 'backup_manager.filesystems.sftp_filesystem',
-            'Gcs' => 'backup_manager.filesystems.gcs_filesystem',
         ];
 
         $filesystemDef = $container->getDefinition('backup_manager.filesystems');
@@ -69,15 +55,8 @@ class BMBackupManagerExtension extends Extension
     private function validateStorage(array $config)
     {
         $requirements = [
-            'Local' => ['package'=>'league/flysystem:^1.0', 'test'=>Local::class],
-            'AwsS3' => ['package'=>'league/flysystem-aws-s3-v3:^1.0', 'test'=>AwsS3Adapter::class],
-            'B2' => ['package'=>'mhetreramesh/flysystem-backblaze:^1.0', 'test'=>BackblazeAdapter::class],
-            'Rackspace' => ['package'=>'league/flysystem-rackspace:^1.0', 'test'=>RackspaceAdapter::class],
-            'Dropbox' => ['package'=>'league/flysystem-dropbox:^1.0', 'test'=>DropboxAdapter::class],
-            'DropboxV2' => ['package'=>'spatie/flysystem-dropbox:^1.2', 'test'=>Dropbox2Adapter::class],
-            'Ftp' => ['package'=>'league/flysystem:^1.0', 'test'=>Ftp::class],
-            'Sftp' => ['package'=>'league/flysystem-sftp:^1.0', 'test'=>SftpAdapter::class],
-            'Gcs' => ['package' => 'superbalist/flysystem-google-storage:^6.0', 'test' => GoogleStorageAdapter::class],
+            'Local' => ['package'=>'league/flysystem:^3.0', 'test'=>LocalFilesystemAdapter::class],
+            'AwsS3' => ['package'=>'league/flysystem-aws-s3-v3:^3.0', 'test'=>AwsS3V3Adapter::class],
         ];
 
         foreach ($config as $key => $storageConfig) {

@@ -54,26 +54,4 @@ class BundleInitializationTest extends BaseBundleTestCase
         $service = $container->get('backup_manager');
         $this->assertInstanceOf(Manager::class, $service);
     }
-
-    public function testNoDependencies()
-    {
-        if (method_exists($this, 'expectException')) {
-            $this->expectException(\LogicException::class);
-        } else {
-            // Legacy
-            $this->setExpectedException(\LogicException::class);
-        }
-
-        // Create a new Kernel
-        $kernel = $this->createKernel();
-
-        // Add some configuration
-        $kernel->addConfigFile(__DIR__.'/config/rackspace.yml');
-
-        // Boot the kernel.
-        $this->bootKernel();
-
-        // Get the container
-        $container = $this->getContainer();
-    }
 }

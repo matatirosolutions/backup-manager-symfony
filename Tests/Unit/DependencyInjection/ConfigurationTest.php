@@ -176,7 +176,30 @@ class ConfigurationTest extends TestCase
     public function validStorageTypes()
     {
         return [
-            ['Local'],['AwsS3'], ['B2'], ['Rackspace'], ['Dropbox'], ['DropboxV2'], ['Ftp'], ['Sftp'], ['Gcs'],
+            ['Local'], ['AwsS3'],
+        ];
+    }
+
+    /**
+     * @dataProvider removedStorageTypes
+     */
+    public function testRemovedStorageTypesAreRejected($type)
+    {
+        $this->assertConfigurationIsInvalid(
+            [
+                [
+                    'database' => ['dev' => ['type' => 'mysql']],
+                    'storage' => ['foo' => ['type' => $type]],
+                ]
+            ],
+            'Type must be one of "Local, AwsS3"'
+        );
+    }
+
+    public function removedStorageTypes()
+    {
+        return [
+            ['B2'], ['Rackspace'], ['Dropbox'], ['DropboxV2'], ['Ftp'], ['Sftp'], ['Gcs'],
         ];
     }
 }

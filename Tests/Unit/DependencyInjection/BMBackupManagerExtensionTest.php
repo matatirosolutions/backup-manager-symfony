@@ -38,7 +38,7 @@ class BMBackupManagerExtensionTest extends AbstractExtensionTestCase
      */
     public function testCustomConfigNames()
     {
-        $storageConfig = ['foobar'=>['type'=>'Ftp', 'host' => 'foo', 'password' =>'xx', 'username'=>'x']];
+        $storageConfig = ['foobar'=>['type'=>'Local', 'root' => '/foo'], 'bazqux'=>['type'=>'Local', 'root' => '/bar']];
         $dbConfig = ['dev'=>['type'=>'mysql']];
 
         $this->load([

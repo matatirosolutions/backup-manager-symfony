@@ -6,7 +6,7 @@ BackupManagerBundle
 [![Build Status](https://travis-ci.org/backup-manager/symfony.svg?branch=master)](https://travis-ci.org/backup-manager/symfony)
 [![Total Downloads](https://poser.pugx.org/backup-manager/symfony/downloads.png)](https://packagist.org/packages/backup-manager/symfony)
 
-A simple database backup manager for Symfony with support for S3, Rackspace, Dropbox, FTP, SFTP.
+A simple database backup manager for Symfony with support for S3 and local storage, using Flysystem 3 (the other storage adapters have been removed).
 
 This package pulls in the framework agnostic [Backup Manager](https://github.com/backup-manager/backup-manager) and provides seamless integration with **Symfony**.
 
@@ -90,42 +90,6 @@ bm_backup_manager:
             version: latest
             bucket:
             root:
-        b2:
-            type: B2
-            key:
-            accountId:
-            bucket:
-        rackspace:
-            type: Rackspace
-            username:
-            password:
-            container:
-        dropbox:
-            type: DropboxV2
-            token:
-            key:
-            secret:
-            app:
-            root:
-        ftp:
-            type: Ftp
-            host:
-            username:
-            password:
-            root:
-            port: 21
-            passive: true
-            ssl: true
-            timeout: 30
-        sftp:
-            type: Sftp
-            host:
-            username:
-            password:
-            root:
-            port: 21
-            timeout: 10
-            privateKey:
 ```
 
 Usage
